@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ShopSphere | Products</title>
+</head>
+
+<body>
+
+    <header>
+        <h1>ShopSphere</h1>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/products/">Products</a>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Our Products</h2>
+
+        {% if products %}
+            {% for product in products %}
+                <article>
+                    {% with primary_image=product.images.first %}
+                       {% if primary_image %}
+                         <img
+                            src="{{ primary_image.image.url }}"
+                            alt="{{ primary_image.alt_text|default:product.name }}"
+                            width="250"
+                         >
+                        {% endif %}
+                    {% endwith %}
+
+                    <h3>{{ product.name }}</h3>
+
+                    <p>Brand: {{ product.brand.name }}</p>
+                    <p>Category: {{ product.category.name }}</p>
+                    <p>Price: ₹{{ product.price }}</p>
+                    <p>SKU: {{ product.sku }}</p>
+
+                </article>
+
+                <hr>
+            {% endfor %}
+        {% else %}
+            <p>No products are currently available.</p>
+        {% endif %}
+    </main>
+
+</body>
+</html>

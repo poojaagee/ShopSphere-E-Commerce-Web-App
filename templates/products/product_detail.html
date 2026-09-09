@@ -6,8 +6,6 @@
 
     <div class="product-detail">
 
-        <!-- Product Image -->
-
         <div class="product-detail-image">
 
             {% with primary_image=product.images.first %}
@@ -28,9 +26,6 @@
             {% endwith %}
 
         </div>
-
-
-        <!-- Product Information -->
 
         <div class="product-detail-info">
 
@@ -58,10 +53,11 @@
                 SKU: {{ product.sku }}
             </p>
 
-
-            <!-- Stock Availability -->
-
             <div class="product-stock">
+
+                <h3>
+                    Available Variants
+                </h3>
 
                 {% for variant in variants %}
 
@@ -70,6 +66,20 @@
                         <p class="variant-name">
                             {{ variant.name }}
                         </p>
+
+                        {% if variant.price %}
+
+                            <p>
+                                Price: ₹{{ variant.price }}
+                            </p>
+
+                        {% else %}
+
+                            <p>
+                                Price: ₹{{ product.price }}
+                            </p>
+
+                        {% endif %}
 
                         {% if variant.inventory.quantity == 0 %}
 
@@ -80,23 +90,89 @@
                         {% elif variant.inventory.is_low_stock %}
 
                             <p class="stock-status low-stock">
-                                Low Stock — Only {{ variant.inventory.quantity }} left
+                                Low Stock —
+                                Only {{ variant.inventory.quantity }} left
                             </p>
+
+                            <form
+                                method="post"
+                                action="{% url 'add_to_cart' variant.id %}"
+                            >
+
+                                {% csrf_token %}
+
+                                <label for="quantity-{{ variant.id }}">
+                                    Quantity
+                                </label>
+
+                                <input
+                                    type="number"
+                                    id="quantity-{{ variant.id }}"
+                                    name="quantity"
+                                    value="1"
+                                    min="1"
+                                    max="{{ variant.inventory.quantity }}"
+                                >
+
+                                <button
+                                    type="submit"
+                                    class="btn"
+                                >
+                                    Add to Cart
+                                </button>
+
+                            </form>
 
                         {% else %}
 
                             <p class="stock-status in-stock">
-                                In Stock — {{ variant.inventory.quantity }} available
+                                In Stock —
+                                {{ variant.inventory.quantity }}
+                                available
                             </p>
+
+                            <form
+                                method="post"
+                                action="{% url 'add_to_cart' variant.id %}"
+                            >
+
+                                {% csrf_token %}
+
+                                <label for="quantity-{{ variant.id }}">
+                                    Quantity
+                                </label>
+
+                                <input
+                                    type="number"
+                                    id="quantity-{{ variant.id }}"
+                                    name="quantity"
+                                    value="1"
+                                    min="1"
+                                    max="{{ variant.inventory.quantity }}"
+                                >
+
+                                <button
+                                    type="submit"
+                                    class="btn"
+                                >
+                                    Add to Cart
+                                </button>
+
+                            </form>
 
                         {% endif %}
 
                     </div>
 
+                {% empty %}
+
+                    <p>
+                        No active variants are currently available.
+                    </p>
+
                 {% endfor %}
 
             </div>
-
 
             <a
                 href="{% url 'product_list' %}"

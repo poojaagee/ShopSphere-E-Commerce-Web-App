@@ -32,6 +32,11 @@ urlpatterns = [
         "accounts/",
         include("accounts.urls"),
     ),
+
+    path(
+    "cart/",
+    include("cart.urls"),
+    ),
 ]
 
 

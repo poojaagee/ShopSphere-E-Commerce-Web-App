@@ -1,0 +1,112 @@
+{% extends "base.html" %}
+
+{% block title %}{{ product.name }} | ShopSphere{% endblock %}
+
+{% block content %}
+
+    <div class="product-detail">
+
+        <!-- Product Image -->
+
+        <div class="product-detail-image">
+
+            {% with primary_image=product.images.first %}
+
+                {% if primary_image %}
+
+                    <img
+                        src="{{ primary_image.image.url }}"
+                        alt="{{ primary_image.alt_text|default:product.name }}"
+                    >
+
+                {% else %}
+
+                    <p>No image available.</p>
+
+                {% endif %}
+
+            {% endwith %}
+
+        </div>
+
+
+        <!-- Product Information -->
+
+        <div class="product-detail-info">
+
+            <p class="product-brand">
+                {{ product.brand.name }}
+            </p>
+
+            <h2>
+                {{ product.name }}
+            </h2>
+
+            <p class="product-category">
+                Category: {{ product.category.name }}
+            </p>
+
+            <p class="product-price">
+                ₹{{ product.price }}
+            </p>
+
+            <p>
+                {{ product.description }}
+            </p>
+
+            <p class="product-sku">
+                SKU: {{ product.sku }}
+            </p>
+
+
+            <!-- Stock Availability -->
+
+            <div class="product-stock">
+
+                {% for variant in variants %}
+
+                    <div class="variant-stock">
+
+                        <p class="variant-name">
+                            {{ variant.name }}
+                        </p>
+
+                        {% if variant.inventory.quantity == 0 %}
+
+                            <p class="stock-status out-of-stock">
+                                Out of Stock
+                            </p>
+
+                        {% elif variant.inventory.is_low_stock %}
+
+                            <p class="stock-status low-stock">
+                                Low Stock — Only {{ variant.inventory.quantity }} left
+                            </p>
+
+                        {% else %}
+
+                            <p class="stock-status in-stock">
+                                In Stock — {{ variant.inventory.quantity }} available
+                            </p>
+
+                        {% endif %}
+
+                    </div>
+
+                {% endfor %}
+
+            </div>
+
+
+            <a
+                href="{% url 'product_list' %}"
+                class="btn"
+            >
+                Back to Products
+            </a>
+
+        </div>
+
+    </div>
+
+{% endblock %}

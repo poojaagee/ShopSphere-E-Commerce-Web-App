@@ -37,6 +37,11 @@ urlpatterns = [
     "cart/",
     include("cart.urls"),
     ),
+
+    path(
+    "wishlist/",
+    include("wishlist.urls"),
+    ),
 ]
 
 

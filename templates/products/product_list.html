@@ -283,6 +283,33 @@
                             View Details
                         </a>
 
+                        {% if user.is_authenticated %}
+
+    <form
+        method="post"
+        action="{% url 'add_to_wishlist' product.id %}"
+        class="wishlist-inline-form"
+    >
+
+        {% csrf_token %}
+
+        <input
+            type="hidden"
+            name="next"
+            value="{{ request.path }}"
+        >
+
+        <button
+            type="submit"
+            class="wishlist-btn"
+        >
+            ♡ Wishlist
+        </button>
+
+    </form>
+
+{% endif %}
+
                     </div>
 
                 </article>

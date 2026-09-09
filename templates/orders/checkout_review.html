@@ -1,0 +1,281 @@
+{% extends "base.html" %}
+
+{% block title %}Review Order | ShopSphere{% endblock %}
+
+{% block content %}
+
+<div class="checkout-container">
+
+    <div class="checkout-header">
+
+        <h2>
+            Review Your Order
+        </h2>
+
+        <p>
+            Confirm your delivery details and order summary.
+        </p>
+
+    </div>
+
+
+    <div class="checkout-layout">
+
+
+        <div class="checkout-main">
+
+
+            <section class="checkout-section">
+
+                <h3>
+                    Shipping Address
+                </h3>
+
+                <div class="selected-address">
+
+                    <strong>
+                        {{ shipping_address.full_name }}
+                    </strong>
+
+                    <span>
+                        {{ shipping_address.phone }}
+                    </span>
+
+                    <span>
+                        {{ shipping_address.address_line1 }}
+                    </span>
+
+                    {% if shipping_address.address_line2 %}
+
+                        <span>
+                            {{ shipping_address.address_line2 }}
+                        </span>
+
+                    {% endif %}
+
+                    <span>
+                        {{ shipping_address.city }},
+                        {{ shipping_address.state }}
+                        -
+                        {{ shipping_address.postal_code }}
+                    </span>
+
+                    <span>
+                        {{ shipping_address.country }}
+                    </span>
+
+                </div>
+
+            </section>
+
+
+            <section class="checkout-section">
+
+                <h3>
+                    Billing Address
+                </h3>
+
+                {% if billing_address %}
+
+                    <div class="selected-address">
+
+                        <strong>
+                            {{ billing_address.full_name }}
+                        </strong>
+
+                        <span>
+                            {{ billing_address.phone }}
+                        </span>
+
+                        <span>
+                            {{ billing_address.address_line1 }}
+                        </span>
+
+                        {% if billing_address.address_line2 %}
+
+                            <span>
+                                {{ billing_address.address_line2 }}
+                            </span>
+
+                        {% endif %}
+
+                        <span>
+                            {{ billing_address.city }},
+                            {{ billing_address.state }}
+                            -
+                            {{ billing_address.postal_code }}
+                        </span>
+
+                        <span>
+                            {{ billing_address.country }}
+                        </span>
+
+                    </div>
+
+                {% else %}
+
+                    <p>
+                        Same as shipping address.
+                    </p>
+
+                {% endif %}
+
+            </section>
+
+
+            <section class="checkout-section">
+
+                <h3>
+                    Items in Your Order
+                </h3>
+
+
+                <div class="review-items">
+
+                    {% for item in cart_items %}
+
+                        <div class="review-item">
+
+                            <div class="review-item-info">
+
+                                <strong>
+                                    {{ item.variant.product.name }}
+                                </strong>
+
+                                <span>
+                                    {{ item.variant.name }}
+                                </span>
+
+                                <span>
+                                    SKU: {{ item.variant.sku }}
+                                </span>
+
+                                <span>
+                                    Quantity:
+                                    {{ item.quantity }}
+                                </span>
+
+                            </div>
+
+                            <strong>
+                                ₹{{ item.total_price|floatformat:2 }}
+                            </strong>
+
+                        </div>
+
+                    {% endfor %}
+
+                </div>
+
+            </section>
+
+
+            <div class="checkout-actions">
+
+                <a
+                    href="{% url 'checkout' %}"
+                    class="btn secondary-btn"
+                >
+                    Change Address
+                </a>
+
+               <form
+    method="post"
+    action="{% url 'place_order' %}"
+>
+    {% csrf_token %}
+
+    <button
+        type="submit"
+        class="btn"
+    >
+        Place Order
+    </button>
+</form>
+
+            </div>
+
+
+        </div>
+
+
+        <aside class="checkout-summary">
+
+            <h3>
+                Final Order Summary
+            </h3>
+
+
+            <div class="checkout-summary-row">
+
+                <span>
+                    Items
+                </span>
+
+                <span>
+                    {{ cart.total_quantity }}
+                </span>
+
+            </div>
+
+
+            <div class="checkout-summary-row">
+
+                <span>
+                    Subtotal
+                </span>
+
+                <span>
+                    ₹{{ cart.subtotal|floatformat:2 }}
+                </span>
+
+            </div>
+
+
+            {% if cart.coupon %}
+
+                <div class="checkout-summary-row discount-row">
+
+                    <span>
+                        Discount
+                        ({{ cart.coupon.code }})
+                    </span>
+
+                    <span>
+                        -₹{{ cart.discount_amount|floatformat:2 }}
+                    </span>
+
+                </div>
+
+            {% endif %}
+
+
+            <div class="checkout-summary-divider">
+            </div>
+
+
+            <div class="checkout-summary-total">
+
+                <span>
+                    Total
+                </span>
+
+                <span>
+                    ₹{{ cart.total|floatformat:2 }}
+                </span>
+
+            </div>
+
+
+            <p class="checkout-note">
+                Demo payment will be available in the next milestone.
+            </p>
+
+        </aside>
+
+
+    </div>
+
+</div>
+
+{% endblock %}

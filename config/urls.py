@@ -47,6 +47,16 @@ urlpatterns = [
     "coupons/",
     include("coupons.urls"),
      ),
+
+     path(
+    "orders/",
+    include("orders.urls"),
+    ),
+
+    path(
+    "orders/",
+    include("orders.urls"),
+    ),
      
 ]
 

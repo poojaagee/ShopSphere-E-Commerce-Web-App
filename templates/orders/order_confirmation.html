@@ -1,0 +1,119 @@
+{% extends "base.html" %}
+
+{% block title %}
+Order Confirmation - ShopSphere
+{% endblock %}
+
+{% block content %}
+
+<div class="confirmation-page">
+
+    <div class="confirmation-card">
+
+        <div class="confirmation-icon">
+            ✓
+        </div>
+
+        <h1>Order Confirmed!</h1>
+
+        <p class="confirmation-message">
+            Thank you for shopping with ShopSphere.
+            Your order has been successfully placed.
+        </p>
+
+        <div class="confirmation-order-number">
+
+            <span>Order Number</span>
+
+            <strong>
+                {{ order.order_number }}
+            </strong>
+
+        </div>
+
+
+        <!-- ORDER STATUS -->
+
+        <div class="confirmation-status">
+
+            <div>
+                <span>Order Status</span>
+
+                <strong class="status-badge order-status">
+                    {{ order.get_status_display }}
+                </strong>
+            </div>
+
+            <div>
+                <span>Payment Status</span>
+
+                <strong class="status-badge payment-status">
+                    {{ order.get_payment_status_display }}
+                </strong>
+            </div>
+
+        </div>
+
+
+        <!-- PAYMENT -->
+
+        <div class="confirmation-payment">
+
+            <span>Payment Method</span>
+
+            <strong>
+                {% if order.payment_method %}
+                    {{ order.payment_method }}
+                {% else %}
+                    Not selected
+                {% endif %}
+            </strong>
+
+        </div>
+
+
+        <!-- TOTAL -->
+
+        <div class="confirmation-total">
+
+            <span>Order Total</span>
+
+            <strong>
+                ₹{{ order.total|floatformat:2 }}
+            </strong>
+
+        </div>
+
+
+        <!-- ACTIONS -->
+
+        <div class="confirmation-actions">
+
+            <a
+                href="{% url 'order_detail' order.order_number %}"
+                class="button primary-button"
+            >
+                View Order Details
+            </a>
+
+            <a
+                href="{% url 'my_orders' %}"
+                class="button secondary-button"
+            >
+                My Orders
+            </a>
+
+            <a
+                href="{% url 'product_list' %}"
+                class="button secondary-button"
+            >
+                Continue Shopping
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

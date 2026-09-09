@@ -1,0 +1,333 @@
+{% extends "base.html" %}
+
+{% block title %}
+Order {{ order.order_number }} - ShopSphere
+{% endblock %}
+
+{% block content %}
+
+<div class="order-detail-page">
+
+    <div class="page-header">
+
+        <div>
+            <h1>Order Details</h1>
+
+            <p>
+                Order #{{ order.order_number }}
+            </p>
+        </div>
+
+        <a
+            href="{% url 'my_orders' %}"
+            class="button secondary-button"
+        >
+            Back to My Orders
+        </a>
+
+    </div>
+
+
+    <!-- ORDER STATUS -->
+
+    <section class="order-detail-card">
+
+        <div class="section-header">
+            <h2>Order Status</h2>
+        </div>
+
+        <div class="status-grid">
+
+            <div>
+                <span>Order Status</span>
+
+                <strong class="status-badge order-status">
+                    {{ order.get_status_display }}
+                </strong>
+            </div>
+
+            <div>
+                <span>Payment Status</span>
+
+                <strong class="status-badge payment-status">
+                    {{ order.get_payment_status_display }}
+                </strong>
+            </div>
+
+            <div>
+                <span>Order Date</span>
+
+                <strong>
+                    {{ order.created_at|date:"d M Y, h:i A" }}
+                </strong>
+            </div>
+
+            <div>
+                <span>Payment Method</span>
+
+                <strong>
+                    {% if order.payment_method %}
+                        {{ order.payment_method }}
+                    {% else %}
+                        Not selected
+                    {% endif %}
+                </strong>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ORDER ITEMS -->
+
+    <section class="order-detail-card">
+
+        <div class="section-header">
+            <h2>Items Ordered</h2>
+        </div>
+
+        <div class="order-detail-items">
+
+            {% for item in order.items.all %}
+
+                <div class="order-detail-item">
+
+                    <div class="item-information">
+
+                        <h3>
+                            {{ item.product_name }}
+                        </h3>
+
+                        <p>
+                            Variant: {{ item.variant_name }}
+                        </p>
+
+                        <p>
+                            SKU: {{ item.sku }}
+                        </p>
+
+                        <p>
+                            Quantity: {{ item.quantity }}
+                        </p>
+
+                    </div>
+
+                    <div class="item-pricing">
+
+                        <p>
+                            ₹{{ item.unit_price|floatformat:2 }}
+                            × {{ item.quantity }}
+                        </p>
+
+                        <strong>
+                            ₹{{ item.total_price|floatformat:2 }}
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            {% endfor %}
+
+        </div>
+
+    </section>
+
+
+    <!-- PRICE SUMMARY -->
+
+    <section class="order-detail-card">
+
+        <div class="section-header">
+            <h2>Price Summary</h2>
+        </div>
+
+        <div class="price-summary">
+
+            <div class="summary-row">
+                <span>Subtotal</span>
+
+                <strong>
+                    ₹{{ order.subtotal|floatformat:2 }}
+                </strong>
+            </div>
+
+            <div class="summary-row">
+                <span>Discount</span>
+
+                <strong>
+                    - ₹{{ order.discount_amount|floatformat:2 }}
+                </strong>
+            </div>
+
+            <div class="summary-row total-row">
+                <span>Total</span>
+
+                <strong>
+                    ₹{{ order.total|floatformat:2 }}
+                </strong>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- SHIPPING ADDRESS -->
+
+    <section class="order-detail-card">
+
+        <div class="section-header">
+            <h2>Shipping Address</h2>
+        </div>
+
+        <div class="address-display">
+
+            <strong>
+                {{ order.shipping_full_name }}
+            </strong>
+
+            <p>
+                {{ order.shipping_phone }}
+            </p>
+
+            <p>
+                {{ order.shipping_address_line1 }}
+            </p>
+
+            {% if order.shipping_address_line2 %}
+                <p>
+                    {{ order.shipping_address_line2 }}
+                </p>
+            {% endif %}
+
+            <p>
+                {{ order.shipping_city }},
+                {{ order.shipping_state }}
+                - {{ order.shipping_postal_code }}
+            </p>
+
+            <p>
+                {{ order.shipping_country }}
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- BILLING ADDRESS -->
+
+    <section class="order-detail-card">
+
+        <div class="section-header">
+            <h2>Billing Address</h2>
+        </div>
+
+        {% if order.billing_full_name %}
+
+            <div class="address-display">
+
+                <strong>
+                    {{ order.billing_full_name }}
+                </strong>
+
+                <p>
+                    {{ order.billing_phone }}
+                </p>
+
+                <p>
+                    {{ order.billing_address_line1 }}
+                </p>
+
+                {% if order.billing_address_line2 %}
+                    <p>
+                        {{ order.billing_address_line2 }}
+                    </p>
+                {% endif %}
+
+                <p>
+                    {{ order.billing_city }},
+                    {{ order.billing_state }}
+                    - {{ order.billing_postal_code }}
+                </p>
+
+                <p>
+                    {{ order.billing_country }}
+                </p>
+
+            </div>
+
+        {% else %}
+
+            <p>
+                Billing address is the same as the shipping address.
+            </p>
+
+        {% endif %}
+
+    </section>
+
+
+    <!-- PAYMENT INFORMATION -->
+
+    <section class="order-detail-card">
+
+        <div class="section-header">
+            <h2>Payment Information</h2>
+        </div>
+
+        <div class="payment-information">
+
+            <div>
+                <span>Method</span>
+
+                <strong>
+                    {% if order.payment_method %}
+                        {{ order.payment_method }}
+                    {% else %}
+                        Not selected
+                    {% endif %}
+                </strong>
+            </div>
+
+            <div>
+                <span>Status</span>
+
+                <strong>
+                    {{ order.get_payment_status_display }}
+                </strong>
+            </div>
+
+            {% if order.payment_reference %}
+
+                <div>
+                    <span>Payment Reference</span>
+
+                    <strong>
+                        {{ order.payment_reference }}
+                    </strong>
+                </div>
+
+            {% endif %}
+
+        </div>
+
+    </section>
+
+
+    <div class="order-detail-actions">
+
+        <a
+            href="{% url 'product_list' %}"
+            class="button primary-button"
+        >
+            Continue Shopping
+        </a>
+
+    </div>
+
+</div>
+
+{% endblock %}

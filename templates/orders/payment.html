@@ -1,0 +1,207 @@
+```html
+{% extends "base.html" %}
+
+{% block title %}Payment - ShopSphere{% endblock %}
+
+{% block content %}
+
+<div class="payment-page">
+
+    <div class="payment-header">
+        <h1>Payment</h1>
+        <p>Order: <strong>{{ order.order_number }}</strong></p>
+    </div>
+
+    <div class="payment-notice">
+        <strong>Demo Payment Environment</strong>
+        <p>
+            This is a test payment system for ShopSphere.
+            No real money will be charged.
+        </p>
+    </div>
+
+    <form
+        method="post"
+        action="{% url 'process_payment' order.order_number %}"
+        id="payment-form"
+    >
+
+        {% csrf_token %}
+
+        <section class="payment-method-section">
+
+            <h2>Select Payment Method</h2>
+
+            <!-- DEMO CARD -->
+            <label class="payment-option">
+                <input
+                    type="radio"
+                    name="payment_method"
+                    value="demo_card"
+                    id="demo-card"
+                    checked
+                >
+
+                <span>
+                    <strong>Demo Card</strong>
+                    <small>
+                        Simulate a successful or failed card payment.
+                    </small>
+                </span>
+            </label>
+
+            <!-- DEMO CARD RESULT OPTIONS -->
+            <div id="demo-card-options" class="demo-card-options">
+
+                <p><strong>Choose Demo Payment Result</strong></p>
+
+                <label>
+                    <input
+                        type="radio"
+                        name="demo_result"
+                        value="success"
+                        checked
+                    >
+                    Payment Success
+                </label>
+
+                <label>
+                    <input
+                        type="radio"
+                        name="demo_result"
+                        value="failure"
+                    >
+                    Payment Failure
+                </label>
+
+            </div>
+
+
+            <!-- CASH ON DELIVERY -->
+            <label class="payment-option">
+                <input
+                    type="radio"
+                    name="payment_method"
+                    value="cod"
+                    id="cod"
+                >
+
+                <span>
+                    <strong>Cash on Delivery</strong>
+                    <small>
+                        Pay when your order is delivered.
+                    </small>
+                </span>
+            </label>
+
+        </section>
+
+
+        <!-- ORDER SUMMARY -->
+        <section class="payment-summary">
+
+            <h2>Order Summary</h2>
+
+            <div class="summary-row">
+                <span>Subtotal</span>
+                <strong>₹{{ order.subtotal|floatformat:2 }}</strong>
+            </div>
+
+            <div class="summary-row">
+                <span>Discount</span>
+                <strong>- ₹{{ order.discount_amount|floatformat:2 }}</strong>
+            </div>
+
+            <div class="summary-row total-row">
+                <span>Total</span>
+                <strong>₹{{ order.total|floatformat:2 }}</strong>
+            </div>
+
+        </section>
+
+
+        <!-- ACTIONS -->
+        <div class="payment-actions">
+
+            <a
+                href="{% url 'cart_detail' %}"
+                class="button secondary-button"
+            >
+                Back to Cart
+            </a>
+
+            <button
+                type="submit"
+                class="button primary-button"
+            >
+                Continue
+            </button>
+
+        </div>
+
+    </form>
+
+</div>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    const demoCardRadio = document.getElementById("demo-card");
+    const codRadio = document.getElementById("cod");
+
+    const demoCardOptions = document.getElementById("demo-card-options");
+
+    const demoResultInputs = document.querySelectorAll(
+        'input[name="demo_result"]'
+    );
+
+
+    function updatePaymentOptions() {
+
+        if (demoCardRadio.checked) {
+
+            // Show success/failure options
+            demoCardOptions.style.display = "block";
+
+            // Enable demo result inputs
+            demoResultInputs.forEach(function (input) {
+                input.disabled = false;
+            });
+
+        } else if (codRadio.checked) {
+
+            // Hide success/failure options
+            demoCardOptions.style.display = "none";
+
+            // Disable demo result inputs
+            demoResultInputs.forEach(function (input) {
+                input.disabled = true;
+            });
+
+        }
+
+    }
+
+
+    // Run once when page loads
+    updatePaymentOptions();
+
+
+    // Run whenever payment method changes
+    demoCardRadio.addEventListener(
+        "change",
+        updatePaymentOptions
+    );
+
+    codRadio.addEventListener(
+        "change",
+        updatePaymentOptions
+    );
+
+});
+</script>
+
+{% endblock %}
+
+

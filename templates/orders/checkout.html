@@ -1,0 +1,415 @@
+{% extends "base.html" %}
+
+{% block title %}Checkout | ShopSphere{% endblock %}
+
+{% block content %}
+
+<div class="checkout-container">
+
+    <div class="checkout-header">
+
+        <h2>
+            Checkout
+        </h2>
+
+        <p>
+            Select your delivery and billing information.
+        </p>
+
+    </div>
+
+    <form
+        method="post"
+        class="checkout-form"
+    >
+
+        {% csrf_token %}
+
+        {% if form.non_field_errors %}
+
+            <div class="form-errors">
+
+                {{ form.non_field_errors }}
+
+            </div>
+
+        {% endif %}
+
+
+        <div class="checkout-layout">
+
+
+            <div class="checkout-main">
+
+
+                <section class="checkout-section">
+
+                    <h3>
+                        1. Shipping Address
+                    </h3>
+
+                    <p class="section-description">
+                        Select the address where you want your order delivered.
+                    </p>
+
+
+                    {% if form.shipping_address.field.queryset %}
+
+                        <div class="address-options">
+
+                            {% for radio in form.shipping_address %}
+
+                                <label class="address-option">
+
+                                    {{ radio.tag }}
+
+                                    <div class="address-option-content">
+
+                                        <strong>
+                                            {{ radio.choice_label.full_name }}
+                                        </strong>
+
+                                        <span>
+                                            {{ radio.choice_label.phone }}
+                                        </span>
+
+                                        <span>
+                                            {{ radio.choice_label.address_line1 }}
+                                        </span>
+
+                                        {% if radio.choice_label.address_line2 %}
+
+                                            <span>
+                                                {{ radio.choice_label.address_line2 }}
+                                            </span>
+
+                                        {% endif %}
+
+                                        <span>
+                                            {{ radio.choice_label.city }},
+                                            {{ radio.choice_label.state }}
+                                            -
+                                            {{ radio.choice_label.postal_code }}
+                                        </span>
+
+                                        <span>
+                                            {{ radio.choice_label.country }}
+                                        </span>
+
+                                    </div>
+
+                                </label>
+
+                            {% endfor %}
+
+                        </div>
+
+                    {% else %}
+
+                        <div class="no-address-message">
+
+                            <p>
+                                You don't have a shipping address yet.
+                            </p>
+
+                            <a
+                                href="{% url 'address_create' %}"
+                                class="btn secondary-btn"
+                            >
+                                Add Shipping Address
+                            </a>
+
+                        </div>
+
+                    {% endif %}
+
+                    {% if form.shipping_address.errors %}
+
+                        <div class="field-error">
+                            {{ form.shipping_address.errors }}
+                        </div>
+
+                    {% endif %}
+
+                </section>
+
+
+                <section class="checkout-section">
+
+                    <h3>
+                        2. Billing Address
+                    </h3>
+
+                    <label class="checkbox-option">
+
+                        {{ form.billing_same_as_shipping }}
+
+                        <span>
+                            Billing address is the same as shipping address
+                        </span>
+
+                    </label>
+
+
+                    <div id="billing-address-section">
+
+                        <p class="section-description">
+                            Select your billing address.
+                        </p>
+
+                        {% if form.billing_address.field.queryset %}
+
+                            <div class="address-options">
+
+                                {% for radio in form.billing_address %}
+
+                                    <label class="address-option">
+
+                                        {{ radio.tag }}
+
+                                        <div class="address-option-content">
+
+                                            <strong>
+                                                {{ radio.choice_label.full_name }}
+                                            </strong>
+
+                                            <span>
+                                                {{ radio.choice_label.phone }}
+                                            </span>
+
+                                            <span>
+                                                {{ radio.choice_label.address_line1 }}
+                                            </span>
+
+                                            {% if radio.choice_label.address_line2 %}
+
+                                                <span>
+                                                    {{ radio.choice_label.address_line2 }}
+                                                </span>
+
+                                            {% endif %}
+
+                                            <span>
+                                                {{ radio.choice_label.city }},
+                                                {{ radio.choice_label.state }}
+                                                -
+                                                {{ radio.choice_label.postal_code }}
+                                            </span>
+
+                                            <span>
+                                                {{ radio.choice_label.country }}
+                                            </span>
+
+                                        </div>
+
+                                    </label>
+
+                                {% endfor %}
+
+                            </div>
+
+                        {% else %}
+
+                            <div class="no-address-message">
+
+                                <p>
+                                    No billing address is available.
+                                </p>
+
+                                <a
+                                    href="{% url 'address_create' %}"
+                                    class="btn secondary-btn"
+                                >
+                                    Add Billing Address
+                                </a>
+
+                            </div>
+
+                        {% endif %}
+
+                    </div>
+
+                    {% if form.billing_address.errors %}
+
+                        <div class="field-error">
+                            {{ form.billing_address.errors }}
+                        </div>
+
+                    {% endif %}
+
+                </section>
+
+
+                <div class="checkout-actions">
+
+                    <a
+                        href="{% url 'cart_detail' %}"
+                        class="btn secondary-btn"
+                    >
+                        Back to Cart
+                    </a>
+
+                    <button
+                        type="submit"
+                        class="btn"
+                    >
+                        Review Order
+                    </button>
+
+                </div>
+
+
+            </div>
+
+
+            <aside class="checkout-summary">
+
+                <h3>
+                    Order Summary
+                </h3>
+
+
+                <div class="checkout-summary-items">
+
+                    {% for item in cart_items %}
+
+                        <div class="checkout-summary-item">
+
+                            <div>
+
+                                <strong>
+                                    {{ item.variant.product.name }}
+                                </strong>
+
+                                <span>
+                                    {{ item.variant.name }}
+                                    ×
+                                    {{ item.quantity }}
+                                </span>
+
+                            </div>
+
+                            <span>
+                                ₹{{ item.total_price|floatformat:2 }}
+                            </span>
+
+                        </div>
+
+                    {% endfor %}
+
+                </div>
+
+
+                <div class="checkout-summary-row">
+
+                    <span>
+                        Items
+                    </span>
+
+                    <span>
+                        {{ cart.total_quantity }}
+                    </span>
+
+                </div>
+
+
+                <div class="checkout-summary-row">
+
+                    <span>
+                        Subtotal
+                    </span>
+
+                    <span>
+                        ₹{{ cart.subtotal|floatformat:2 }}
+                    </span>
+
+                </div>
+
+
+                {% if cart.coupon %}
+
+                    <div class="checkout-summary-row discount-row">
+
+                        <span>
+                            Discount
+                            ({{ cart.coupon.code }})
+                        </span>
+
+                        <span>
+                            -₹{{ cart.discount_amount|floatformat:2 }}
+                        </span>
+
+                    </div>
+
+                {% endif %}
+
+
+                <div class="checkout-summary-divider">
+                </div>
+
+
+                <div class="checkout-summary-total">
+
+                    <span>
+                        Total
+                    </span>
+
+                    <span>
+                        ₹{{ cart.total|floatformat:2 }}
+                    </span>
+
+                </div>
+
+
+                <p class="checkout-note">
+                    Payment will be handled securely in the next step.
+                </p>
+
+            </aside>
+
+        </div>
+
+    </form>
+
+</div>
+
+
+<script>
+
+    const billingCheckbox =
+        document.getElementById(
+            "id_billing_same_as_shipping"
+        );
+
+    const billingSection =
+        document.getElementById(
+            "billing-address-section"
+        );
+
+
+    function updateBillingVisibility() {
+
+        if (billingCheckbox.checked) {
+
+            billingSection.style.display = "none";
+
+        } else {
+
+            billingSection.style.display = "block";
+
+        }
+
+    }
+
+
+    billingCheckbox.addEventListener(
+        "change",
+        updateBillingVisibility
+    );
+
+
+    updateBillingVisibility();
+
+</script>
+
+{% endblock %}

@@ -1258,3 +1258,889 @@ footer {
 .remove-coupon-btn:hover {
     text-decoration: underline;
 }
+
+/* ================================
+   CHECKOUT
+================================ */
+
+.checkout-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+.checkout-header {
+    margin-bottom: 30px;
+}
+
+.checkout-header h2 {
+    margin-bottom: 8px;
+}
+
+.checkout-header p {
+    color: #6b7280;
+}
+
+.checkout-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 2fr) minmax(300px, 1fr);
+    gap: 30px;
+    align-items: start;
+}
+
+.checkout-main {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.checkout-section {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    padding: 24px;
+}
+
+.checkout-section h3 {
+    margin-bottom: 8px;
+}
+
+.section-description {
+    color: #6b7280;
+    margin-bottom: 20px;
+}
+
+.address-options {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.address-option {
+    display: flex;
+    gap: 14px;
+    padding: 16px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.address-option:hover {
+    border-color: #6b7280;
+}
+
+.address-option input {
+    margin-top: 4px;
+}
+
+.address-option-content {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.address-option-content strong {
+    margin-bottom: 4px;
+}
+
+.address-option-content span {
+    color: #4b5563;
+    font-size: 14px;
+}
+
+.checkbox-option {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin: 18px 0;
+    cursor: pointer;
+}
+
+.no-address-message {
+    padding: 16px;
+    background: #f9fafb;
+    border-radius: 8px;
+}
+
+.no-address-message p {
+    margin-bottom: 12px;
+}
+
+.field-error {
+    color: #b91c1c;
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+.form-errors {
+    color: #b91c1c;
+    margin-bottom: 20px;
+}
+
+.checkout-actions {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: 10px;
+}
+
+.checkout-summary {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    padding: 24px;
+    position: sticky;
+    top: 20px;
+}
+
+.checkout-summary h3 {
+    margin-bottom: 20px;
+}
+
+.checkout-summary-items {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-bottom: 20px;
+}
+
+.checkout-summary-item {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    font-size: 14px;
+}
+
+.checkout-summary-item div {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.checkout-summary-item span {
+    color: #6b7280;
+}
+
+.checkout-summary-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    margin: 12px 0;
+}
+
+.checkout-summary-divider {
+    border-top: 1px solid #e5e7eb;
+    margin: 18px 0;
+}
+
+.checkout-summary-total {
+    display: flex;
+    justify-content: space-between;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.discount-row {
+    color: #15803d;
+}
+
+.checkout-note {
+    margin-top: 18px;
+    color: #6b7280;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.selected-address {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    color: #4b5563;
+}
+
+.selected-address strong {
+    color: #111827;
+    margin-bottom: 4px;
+}
+
+.review-items {
+    display: flex;
+    flex-direction: column;
+}
+
+.review-item {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 16px 0;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.review-item:last-child {
+    border-bottom: none;
+}
+
+.review-item-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.review-item-info span {
+    color: #6b7280;
+    font-size: 14px;
+}
+
+@media (max-width: 800px) {
+
+    .checkout-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .checkout-summary {
+        position: static;
+    }
+
+    .checkout-actions {
+        flex-direction: column;
+    }
+
+}
+
+.checkout-actions form {
+    margin: 0;
+}
+
+.checkout-actions form .btn {
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+}
+
+/* ================================
+   DEMO PAYMENT
+================================ */
+
+.payment-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+.payment-header {
+    margin-bottom: 30px;
+}
+
+.payment-header h2 {
+    margin-bottom: 8px;
+}
+
+.payment-header p {
+    color: #6b7280;
+}
+
+.payment-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 2fr) minmax(300px, 1fr);
+    gap: 30px;
+    align-items: start;
+}
+
+.payment-main {
+    display: flex;
+    flex-direction: column;
+}
+
+.payment-section {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    padding: 24px;
+}
+
+.payment-section h3 {
+    margin-bottom: 20px;
+}
+
+.payment-option {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 16px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    margin-bottom: 12px;
+    cursor: pointer;
+}
+
+.payment-option:hover {
+    border-color: #6b7280;
+}
+
+.payment-option input {
+    margin-top: 4px;
+}
+
+.payment-option-content {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.payment-option-content span {
+    color: #6b7280;
+    font-size: 14px;
+}
+
+.demo-card-options {
+    margin: 0 0 20px 32px;
+}
+
+.demo-payment-note {
+    color: #6b7280;
+    font-size: 14px;
+    margin-bottom: 12px;
+}
+
+.payment-actions {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: 24px;
+}
+
+.payment-actions .btn {
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+}
+
+.payment-summary {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    padding: 24px;
+    position: sticky;
+    top: 20px;
+}
+
+.payment-summary h3 {
+    margin-bottom: 20px;
+}
+
+.payment-summary-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    margin: 12px 0;
+}
+
+.payment-summary-divider {
+    border-top: 1px solid #e5e7eb;
+    margin: 18px 0;
+}
+
+.payment-summary-total {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.demo-payment-warning {
+    margin-top: 20px;
+    padding: 12px;
+    background: #f9fafb;
+    border-radius: 6px;
+    color: #6b7280;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+@media (max-width: 800px) {
+
+    .payment-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .payment-summary {
+        position: static;
+    }
+
+    .payment-actions {
+        flex-direction: column;
+    }
+
+}
+
+/* =========================================================
+   MILESTONE 7.5 - ORDERS
+   ========================================================= */
+
+.orders-page,
+.order-detail-page,
+.confirmation-page {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 30px 20px;
+}
+
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.page-header h1 {
+    margin-bottom: 8px;
+}
+
+.page-header p {
+    margin: 0;
+    color: #666;
+}
+
+
+/* =========================================================
+   MY ORDERS
+   ========================================================= */
+
+.orders-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.order-card {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background: #fff;
+    overflow: hidden;
+}
+
+.order-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 20px;
+    border-bottom: 1px solid #eee;
+}
+
+.order-card-header h2 {
+    margin: 0 0 8px;
+    font-size: 20px;
+}
+
+.order-card-header p {
+    margin: 0;
+    color: #666;
+    font-size: 14px;
+}
+
+.order-statuses {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.status-badge {
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.order-status {
+    background: #e8f0fe;
+    color: #174ea6;
+}
+
+.payment-status {
+    background: #e6f4ea;
+    color: #137333;
+}
+
+.order-card-body {
+    padding: 20px;
+}
+
+.order-item-preview {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 12px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.order-item-preview:last-child {
+    border-bottom: none;
+}
+
+.order-item-preview strong {
+    display: block;
+}
+
+.order-item-preview p {
+    margin: 5px 0 0;
+    color: #666;
+    font-size: 14px;
+}
+
+.order-card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+}
+
+.order-card-footer span {
+    display: block;
+    color: #666;
+    font-size: 14px;
+}
+
+.order-card-footer strong {
+    font-size: 20px;
+}
+
+
+/* =========================================================
+   EMPTY STATE
+   ========================================================= */
+
+.empty-state {
+    text-align: center;
+    padding: 60px 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background: #fff;
+}
+
+.empty-state h2 {
+    margin-bottom: 10px;
+}
+
+.empty-state p {
+    color: #666;
+    margin-bottom: 25px;
+}
+
+
+/* =========================================================
+   ORDER DETAIL
+   ========================================================= */
+
+.order-detail-card {
+    margin-bottom: 25px;
+    padding: 25px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background: #fff;
+}
+
+.section-header {
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #eee;
+}
+
+.section-header h2 {
+    margin: 0;
+    font-size: 21px;
+}
+
+.status-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.status-grid > div,
+.payment-information > div {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.status-grid span,
+.payment-information span {
+    color: #666;
+    font-size: 14px;
+}
+
+
+/* =========================================================
+   ORDER ITEMS
+   ========================================================= */
+
+.order-detail-item {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+    padding: 20px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.order-detail-item:first-child {
+    padding-top: 0;
+}
+
+.order-detail-item:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.item-information h3 {
+    margin: 0 0 10px;
+}
+
+.item-information p {
+    margin: 5px 0;
+    color: #666;
+}
+
+.item-pricing {
+    text-align: right;
+    white-space: nowrap;
+}
+
+.item-pricing p {
+    color: #666;
+    margin-bottom: 8px;
+}
+
+
+/* =========================================================
+   PRICE SUMMARY
+   ========================================================= */
+
+.price-summary {
+    max-width: 500px;
+    margin-left: auto;
+}
+
+.summary-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 10px 0;
+}
+
+.total-row {
+    margin-top: 10px;
+    padding-top: 15px;
+    border-top: 1px solid #ddd;
+    font-size: 20px;
+}
+
+
+/* =========================================================
+   ADDRESS
+   ========================================================= */
+
+.address-display {
+    line-height: 1.6;
+}
+
+.address-display p {
+    margin: 3px 0;
+}
+
+
+/* =========================================================
+   PAYMENT INFORMATION
+   ========================================================= */
+
+.payment-information {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+
+/* =========================================================
+   ORDER DETAIL ACTIONS
+   ========================================================= */
+
+.order-detail-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 25px;
+}
+
+
+/* =========================================================
+   CONFIRMATION
+   ========================================================= */
+
+.confirmation-page {
+    display: flex;
+    justify-content: center;
+}
+
+.confirmation-card {
+    width: 100%;
+    max-width: 700px;
+    padding: 45px 35px;
+    text-align: center;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    background: #fff;
+}
+
+.confirmation-icon {
+    width: 65px;
+    height: 65px;
+    margin: 0 auto 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: #e6f4ea;
+    color: #137333;
+    font-size: 34px;
+    font-weight: bold;
+}
+
+.confirmation-card h1 {
+    margin-bottom: 10px;
+}
+
+.confirmation-message {
+    color: #666;
+    margin-bottom: 30px;
+}
+
+.confirmation-order-number {
+    padding: 20px;
+    border-radius: 8px;
+    background: #f7f7f7;
+    margin-bottom: 25px;
+}
+
+.confirmation-order-number span {
+    display: block;
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 8px;
+}
+
+.confirmation-order-number strong {
+    font-size: 20px;
+    letter-spacing: 1px;
+}
+
+.confirmation-status {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.confirmation-status > div {
+    padding: 15px;
+    border: 1px solid #eee;
+    border-radius: 8px;
+}
+
+.confirmation-status span,
+.confirmation-payment span,
+.confirmation-total span {
+    display: block;
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 8px;
+}
+
+.confirmation-payment {
+    padding: 15px;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+}
+
+.confirmation-total {
+    padding: 25px 0;
+}
+
+.confirmation-total strong {
+    display: block;
+    font-size: 28px;
+}
+
+.confirmation-actions {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+
+/* =========================================================
+   RESPONSIVE DESIGN
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+    .page-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .order-card-header {
+        flex-direction: column;
+    }
+
+    .status-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .payment-information {
+        grid-template-columns: 1fr;
+    }
+
+    .order-detail-item {
+        flex-direction: column;
+    }
+
+    .item-pricing {
+        text-align: left;
+    }
+
+    .confirmation-card {
+        padding: 30px 20px;
+    }
+
+    .confirmation-status {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+@media (max-width: 480px) {
+
+    .status-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .order-card-footer {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .confirmation-actions {
+        flex-direction: column;
+    }
+
+    .confirmation-actions .button {
+        width: 100%;
+    }
+
+}

@@ -1,53 +1,65 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% extends "base.html" %}
 
-    <title>ShopSphere | Products</title>
-</head>
+{% block title %}ShopSphere | Products{% endblock %}
 
-<body>
+{% block content %}
 
-    <header>
-        <h1>ShopSphere</h1>
-        <nav>
-            <a href="/">Home</a>
-            <a href="/products/">Products</a>
-        </nav>
-    </header>
+    <h2>Our Products</h2>
 
-    <main>
-        <h2>Our Products</h2>
+    {% if products %}
 
-        {% if products %}
+        <div class="product-grid">
+
             {% for product in products %}
-                <article>
+
+                <article class="product-card">
+
                     {% with primary_image=product.images.first %}
-                       {% if primary_image %}
-                         <img
-                            src="{{ primary_image.image.url }}"
-                            alt="{{ primary_image.alt_text|default:product.name }}"
-                            width="250"
-                         >
+                        {% if primary_image %}
+                            <img
+                                src="{{ primary_image.image.url }}"
+                                alt="{{ primary_image.alt_text|default:product.name }}"
+                                class="product-image"
+                            >
                         {% endif %}
                     {% endwith %}
 
-                    <h3>{{ product.name }}</h3>
+                    <div class="product-info">
 
-                    <p>Brand: {{ product.brand.name }}</p>
-                    <p>Category: {{ product.category.name }}</p>
-                    <p>Price: ₹{{ product.price }}</p>
-                    <p>SKU: {{ product.sku }}</p>
+                        <h3>{{ product.name }}</h3>
+
+                        <p class="product-brand">
+                            {{ product.brand.name }}
+                        </p>
+
+                        <p class="product-category">
+                            {{ product.category.name }}
+                        </p>
+
+                        <p class="product-price">
+                            ₹{{ product.price }}
+                        </p>
+
+                        <p class="product-sku">
+                            SKU: {{ product.sku }}
+                        </p>
+
+                        <a href="#" class="btn">
+                            View Details
+                        </a>
+
+                    </div>
 
                 </article>
 
-                <hr>
             {% endfor %}
-        {% else %}
-            <p>No products are currently available.</p>
-        {% endif %}
-    </main>
 
-</body>
-</html>
+        </div>
+
+    {% else %}
+
+        <p>No products are currently available.</p>
+
+    {% endif %}
+
+{% endblock %}

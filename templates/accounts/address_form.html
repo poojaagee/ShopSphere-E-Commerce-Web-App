@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block title %}{{ page_title }} | ShopSphere{% endblock %}
+
+{% block content %}
+
+<div class="auth-container">
+
+    <div class="auth-card address-form-card">
+
+        <h2>{{ page_title }}</h2>
+
+        <form method="post">
+
+            {% csrf_token %}
+
+            {{ form.non_field_errors }}
+
+            {% for field in form %}
+
+                <div class="form-group">
+
+                    <label for="{{ field.id_for_label }}">
+                        {{ field.label }}
+                    </label>
+
+                    {{ field }}
+
+                    {% for error in field.errors %}
+                        <div class="form-error">
+                            {{ error }}
+                        </div>
+                    {% endfor %}
+
+                </div>
+
+            {% endfor %}
+
+            <div class="form-actions">
+
+                <button
+                    type="submit"
+                    class="btn"
+                >
+                    Save Address
+                </button>
+
+                <a
+                    href="{% url 'profile' %}"
+                    class="clear-filters"
+                >
+                    Cancel
+                </a>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+{% endblock %}

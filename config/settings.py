@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     "products",
+    "accounts.apps.AccountsConfig",
 ]
 
 MIDDLEWARE = [
@@ -141,3 +142,7 @@ MAILERS = {
         'BACKEND': 'django.core.mail.backends.console.EmailBackend',
     },
 }
+
+LOGIN_URL = "/accounts/login/"
+LOGIN_REDIRECT_URL = "/accounts/profile/"
+LOGOUT_REDIRECT_URL = "/products/"

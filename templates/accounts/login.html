@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+
+{% block title %}Login | ShopSphere{% endblock %}
+
+{% block content %}
+
+<div class="auth-container">
+
+    <div class="auth-card">
+
+        <h2>Login</h2>
+
+        <p class="auth-subtitle">
+            Login to your ShopSphere account.
+        </p>
+
+        <form method="post">
+
+            {% csrf_token %}
+
+            {{ form.non_field_errors }}
+
+            <div class="form-group">
+
+                <label for="id_username">
+                    Username
+                </label>
+
+                {{ form.username }}
+
+                {% for error in form.username.errors %}
+                    <div class="form-error">
+                        {{ error }}
+                    </div>
+                {% endfor %}
+
+            </div>
+
+            <div class="form-group">
+
+                <label for="id_password">
+                    Password
+                </label>
+
+                {{ form.password }}
+
+                {% for error in form.password.errors %}
+                    <div class="form-error">
+                        {{ error }}
+                    </div>
+                {% endfor %}
+
+            </div>
+
+            <button
+                type="submit"
+                class="btn"
+            >
+                Login
+            </button>
+
+        </form>
+
+        <p class="auth-footer">
+            Don't have an account?
+            <a href="{% url 'register' %}">
+                Create one
+            </a>
+        </p>
+
+    </div>
+
+</div>
+
+{% endblock %}

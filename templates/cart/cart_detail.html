@@ -150,73 +150,160 @@
 
                 <aside class="cart-summary">
 
-                    <h3>
-                        Order Summary
-                    </h3>
+    <h3>
+        Order Summary
+    </h3>
 
-                    <div class="cart-summary-row">
 
-                        <span>
-                            Items
-                        </span>
+    <div class="cart-summary-row">
 
-                        <span>
-                            {{ cart.total_quantity }}
-                        </span>
+        <span>
+            Items
+        </span>
 
-                    </div>
+        <span>
+            {{ cart.total_quantity }}
+        </span>
 
-                    <div class="cart-summary-row">
+    </div>
 
-                        <span>
-                            Subtotal
-                        </span>
 
-                        <span>
-                            ₹{{ cart.subtotal }}
-                        </span>
+    <div class="cart-summary-row">
 
-                    </div>
+        <span>
+            Subtotal
+        </span>
 
-                    <div class="cart-summary-divider">
-                    </div>
+        <span>
+            ₹{{ cart.subtotal|floatformat:2 }}
+        </span>
 
-                    <div class="cart-summary-total">
+    </div>
 
-                        <span>
-                            Total
-                        </span>
 
-                        <span>
-                            ₹{{ cart.subtotal }}
-                        </span>
+    {% if cart.coupon %}
 
-                    </div>
+        <div class="cart-summary-row discount-row">
 
-                    <div class="cart-summary-actions">
+            <span>
+                Discount
+                ({{ cart.coupon.code }})
+            </span>
 
-                        <a
-                            href="{% url 'product_list' %}"
-                            class="btn secondary-btn"
-                        >
-                            Continue Shopping
-                        </a>
+            <span>
+                -₹{{ cart.discount_amount|floatformat:2 }}
+            </span>
 
-                        <button
-                            type="button"
-                            class="btn"
-                            disabled
-                        >
-                            Proceed to Checkout
-                        </button>
+        </div>
 
-                    </div>
 
-                    <p class="checkout-note">
-                        Checkout will be available in Milestone 7.
-                    </p>
+        <form
+            method="post"
+            action="{% url 'remove_coupon' %}"
+            class="coupon-remove-form"
+        >
 
-                </aside>
+            {% csrf_token %}
+
+            <button
+                type="submit"
+                class="remove-coupon-btn"
+            >
+                Remove Coupon
+            </button>
+
+        </form>
+
+    {% endif %}
+
+
+    <div class="coupon-section">
+
+        <h4>
+            Have a Coupon?
+        </h4>
+
+
+        {% if cart.coupon %}
+
+            <p class="coupon-applied">
+                {{ cart.coupon.code }} is applied.
+            </p>
+
+        {% else %}
+
+            <form
+                method="post"
+                action="{% url 'apply_coupon' %}"
+                class="coupon-form"
+            >
+
+                {% csrf_token %}
+
+                <input
+                    type="text"
+                    name="code"
+                    placeholder="Enter coupon code"
+                    maxlength="50"
+                    required
+                >
+
+                <button
+                    type="submit"
+                    class="btn"
+                >
+                    Apply
+                </button>
+
+            </form>
+
+        {% endif %}
+
+    </div>
+
+
+    <div class="cart-summary-divider">
+    </div>
+
+
+    <div class="cart-summary-total">
+
+        <span>
+            Total
+        </span>
+
+        <span>
+            ₹{{ cart.total|floatformat:2 }}
+        </span>
+
+    </div>
+
+
+    <div class="cart-summary-actions">
+
+        <a
+            href="{% url 'product_list' %}"
+            class="btn secondary-btn"
+        >
+            Continue Shopping
+        </a>
+
+        <button
+            type="button"
+            class="btn"
+            disabled
+        >
+            Proceed to Checkout
+        </button>
+
+    </div>
+
+
+    <p class="checkout-note">
+        Checkout will be available in Milestone 7.
+    </p>
+
+</aside>
 
             </div>
 

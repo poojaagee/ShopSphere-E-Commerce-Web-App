@@ -1196,3 +1196,65 @@ footer {
 
 }
 
+/* =========================
+   Coupons
+   ========================= */
+
+.coupon-section {
+    border-top: 1px solid #e5e7eb;
+    border-bottom: 1px solid #e5e7eb;
+    padding: 20px 0;
+    margin: 20px 0;
+}
+
+.coupon-section h4 {
+    margin-bottom: 12px;
+}
+
+.coupon-form {
+    display: flex;
+    gap: 8px;
+}
+
+.coupon-form input {
+    flex: 1;
+    min-width: 0;
+    padding: 10px;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    font-family: inherit;
+}
+
+.coupon-form input:focus {
+    outline: none;
+    border-color: #1f2937;
+}
+
+.coupon-applied {
+    color: #15803d;
+    font-weight: bold;
+}
+
+.discount-row {
+    color: #15803d;
+    font-weight: 500;
+}
+
+.coupon-remove-form {
+    margin-top: 8px;
+}
+
+.remove-coupon-btn {
+    background: none;
+    border: none;
+    padding: 0;
+    color: #b91c1c;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.remove-coupon-btn:hover {
+    text-decoration: underline;
+}

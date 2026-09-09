@@ -42,6 +42,12 @@ urlpatterns = [
     "wishlist/",
     include("wishlist.urls"),
     ),
+
+    path(
+    "coupons/",
+    include("coupons.urls"),
+     ),
+     
 ]
 
 

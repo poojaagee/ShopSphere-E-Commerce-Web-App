@@ -57,6 +57,11 @@ urlpatterns = [
     "orders/",
     include("orders.urls"),
     ),
+
+    path(
+    "reviews/",
+    include("reviews.urls"),
+    ),
      
 ]
 

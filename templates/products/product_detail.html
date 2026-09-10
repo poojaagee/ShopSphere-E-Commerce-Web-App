@@ -199,6 +199,17 @@
 
     </form>
 
+    {% if user.is_authenticated %}
+
+    <a
+        href="{% url 'create_review' product.id %}"
+        class="button secondary-button"
+    >
+        Write a Review
+    </a>
+
+    {% endif %}
+
 {% endif %}
 
             <a
@@ -212,4 +223,198 @@
 
     </div>
 
+    <!-- =====================================================
+     REVIEWS & RATINGS
+     ===================================================== -->
+
+<section class="product-reviews">
+
+    <div class="reviews-header">
+
+        <div>
+            <h2>Customer Reviews</h2>
+
+            {% if review_count %}
+
+                <div class="rating-overview">
+
+                    <div class="average-rating">
+
+                        <span class="rating-number">
+                            {{ average_rating|floatformat:1 }}
+                        </span>
+
+                        <span class="rating-stars">
+                             ★★★★★
+                        </span>
+
+                        <span class="review-count">
+                            {{ review_count }}
+                            {% if review_count == 1 %}
+                                Review
+                            {% else %}
+                                Reviews
+                            {% endif %}
+                        </span>
+
+                    </div>
+
+                </div>
+
+            {% else %}
+
+                <p class="no-reviews-summary">
+                    No reviews yet. Be the first to review this product.
+                </p>
+
+            {% endif %}
+
+        </div>
+
+        {% if user.is_authenticated %}
+
+            <a
+                href="{% url 'create_review' product.id %}"
+                class="button secondary-button"
+            >
+                Write a Review
+            </a>
+
+        {% endif %}
+
+    </div>
+
+
+    {% if review_count %}
+
+        <div class="rating-distribution">
+
+            <h3>Rating Summary</h3>
+
+            {% for rating, count in rating_distribution.items %}
+
+                <div class="rating-row">
+
+                    <span class="rating-label">
+                        {{ rating }} Star
+                    </span>
+
+                    <div class="rating-bar">
+
+                        {% if review_count %}
+
+                            <div>
+                                class="rating-bar-fill"
+                                <div> class="rating-bar-fill" style="width: {% widthratio count review_count 100 %}%"</div>
+                            </div>
+
+                        {% endif %}
+
+                    </div>
+
+                    <span class="rating-count">
+                        {{ count }}
+                    </span>
+
+                </div>
+
+            {% endfor %}
+
+        </div>
+
+
+        <div class="review-list">
+
+            {% for review in reviews %}
+
+                <article class="review-card">
+
+                    <div class="review-card-header">
+
+                        <div>
+
+                            <h3>
+                                {{ review.title }}
+                            </h3>
+
+                            <div class="review-rating">
+
+                                {% for star in "12345" %}
+
+                                    {% if forloop.counter <= review.rating %}
+                                        ★
+                                    {% else %}
+                                        ☆
+                                    {% endif %}
+
+                                {% endfor %}
+
+                                <span>
+                                    {{ review.rating }}/5
+                                </span>
+
+                            </div>
+
+                        </div>
+
+
+                div class="review-meta">
+
+                    <strong>
+                       {{ review.user.username }}
+                    </strong>
+
+                    <span>
+                       {{ review.created_at|date:"d M Y" }}
+                    </span>
+
+                    <span class="verified-purchase">
+                     ✓ Verified Purchase
+                    /span>
+
+                </div>
+
+                    </div>
+
+
+                    <div class="review-comment">
+
+                        <p>
+                            {{ review.comment }}
+                        </p>
+
+                    </div>
+
+
+                    {% if user.is_authenticated and review.user == user %}
+
+                        <div class="review-actions">
+
+                            <a
+                                href="{% url 'edit_review' review.id %}"
+                                class="button secondary-button"
+                            >
+                                Edit
+                            </a>
+
+                            <a
+                                href="{% url 'delete_review' review.id %}"
+                                class="button danger-button"
+                            >
+                                Delete
+                            </a>
+
+                        </div>
+
+                    {% endif %}
+
+                </article>
+
+            {% endfor %}
+
+        </div>
+
+    {% endif %}
+
+</section>
 {% endblock %}

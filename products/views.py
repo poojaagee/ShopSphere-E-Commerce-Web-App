@@ -1,7 +1,8 @@
 from decimal import Decimal, InvalidOperation
 
 from django.core.paginator import Paginator
-from django.db.models import Q
+from django.db.models import Avg, Count, Q
+from django.shortcuts import get_object_or_404, render
 from django.shortcuts import render
 
 from .models import Brand, Category, Product
@@ -160,6 +161,7 @@ def product_list(request):
 
 
 def product_detail(request, slug):
+
     product = Product.objects.get(
         slug=slug,
         is_active=True,
@@ -169,9 +171,29 @@ def product_detail(request, slug):
         is_active=True
     ).select_related("inventory")
 
+    reviews = product.reviews.select_related(
+        "user",
+    ).all()
+
+    rating_summary = reviews.aggregate(
+        average_rating=Avg("rating"),
+        review_count=Count("id"),
+    )
+
+    rating_distribution = {
+        rating: reviews.filter(
+            rating=rating
+        ).count()
+        for rating in range(5, 0, -1)
+    }
+
     context = {
         "product": product,
         "variants": variants,
+        "reviews": reviews,
+        "average_rating": rating_summary["average_rating"],
+        "review_count": rating_summary["review_count"],
+        "rating_distribution": rating_distribution,
     }
 
     return render(

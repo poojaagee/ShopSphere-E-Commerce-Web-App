@@ -22,14 +22,43 @@ load_dotenv(BASE_DIR / ".env")
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/6.1/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.getenv("DJANGO_SECRET_KEY")
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.getenv("DEBUG", "True").lower() == "true"
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    host.strip()
+    for host in os.getenv("ALLOWED_HOSTS", "127.0.0.1,localhost").split(",")
+    if host.strip()
+]
 
+# ============================================================
+# Security Settings
+# ============================================================
+
+if DEBUG:
+    # Local development uses HTTP.
+    CSRF_COOKIE_SECURE = False
+    SESSION_COOKIE_SECURE = False
+else:
+    # Production should use HTTPS.
+    CSRF_COOKIE_SECURE = True
+    SESSION_COOKIE_SECURE = True
+
+# Prevent browsers from MIME-sniffing responses.
+SECURE_CONTENT_TYPE_NOSNIFF = True
+
+# Prevent the site from being embedded in a frame/iframe.
+X_FRAME_OPTIONS = "DENY"
+
+# Referrer policy for improved privacy.
+SECURE_REFERRER_POLICY = "same-origin"
+
+# HSTS is enabled only when DEBUG=False.
+if not DEBUG:
+    SECURE_HSTS_SECONDS = 31536000
+    SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+    SECURE_HSTS_PRELOAD = True
 
 # Application definition
 

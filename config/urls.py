@@ -62,6 +62,11 @@ urlpatterns = [
     "reviews/",
     include("reviews.urls"),
     ),
+
+    path(
+    "api/",
+    include("api.urls"),
+    ),
      
 ]
 

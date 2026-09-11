@@ -41,13 +41,17 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    "rest_framework",
+    "api",
+
     "products.apps.ProductsConfig",
     "accounts.apps.AccountsConfig",
     "cart.apps.CartConfig",
     "wishlist.apps.WishlistConfig",
     "coupons.apps.CouponsConfig",
     "orders.apps.OrdersConfig",
-    "reviews"
+    "reviews",
+    
 ]
 
 MIDDLEWARE = [
@@ -151,3 +155,12 @@ MAILERS = {
 LOGIN_URL = "/accounts/login/"
 LOGIN_REDIRECT_URL = "/accounts/profile/"
 LOGOUT_REDIRECT_URL = "/products/"
+
+REST_FRAMEWORK = {
+    "DEFAULT_AUTHENTICATION_CLASSES": [
+        "rest_framework.authentication.SessionAuthentication",
+    ],
+    "DEFAULT_PERMISSION_CLASSES": [
+        "rest_framework.permissions.IsAuthenticatedOrReadOnly",
+    ],
+}

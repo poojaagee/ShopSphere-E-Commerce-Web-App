@@ -492,39 +492,8 @@ Academic project — 7th Semester
 <h2>LOGIN PAGE</h2>
 ![image alt](https://github.com/poojaagee/ShopSphere/blob/50856149577aefc1fe03d2d4ee0cc2196b181143/Login%20Page.png)
 
-<h2>PROFILE PAGE</h2>
-![image alt](https://github.com/poojaagee/ShopSphere/blob/c25eae24a4db8588563d003e5dc8818bc4a65e12/My%20Profile.png)
-
-<h2>Our Products</h2>
-![image alt](https://github.com/poojaagee/ShopSphere/blob/c25eae24a4db8588563d003e5dc8818bc4a65e12/Our%20Products%20-%201.png)
-
-<h2>Our Products</h2>
-![image alt](https://github.com/poojaagee/ShopSphere/blob/c25eae24a4db8588563d003e5dc8818bc4a65e12/Our%20Products%20-%202.png)
-
-<h2>Our Products</h2>
-![image alt](https://github.com/poojaagee/ShopSphere/blob/c25eae24a4db8588563d003e5dc8818bc4a65e12/Our%20Products%20-%203.png)
-
-<h2>Shopping Cart</h2>
-![image alt](https://github.com/poojaagee/ShopSphere/blob/c25eae24a4db8588563d003e5dc8818bc4a65e12/Shopping%20Cart.png)
-
-<h2>Checkout And Review Order</h2>
-![image alt](https://github.com/poojaagee/ShopSphere/blob/c25eae24a4db8588563d003e5dc8818bc4a65e12/Review%20Your%20Order.png)
-
-<h2>Payment</h2>
-![image alt](https://github.com/poojaagee/ShopSphere/blob/c25eae24a4db8588563d003e5dc8818bc4a65e12/Payment%20Success.png)
-
-<h2>Paid</h2>
-![image alt](https://github.com/poojaagee/ShopSphere/blob/c25eae24a4db8588563d003e5dc8818bc4a65e12/Paid.png)
-
-<h2>Order Confirmed</h2>
-![image alt](https://github.com/poojaagee/ShopSphere/blob/c25eae24a4db8588563d003e5dc8818bc4a65e12/Order%20Confirmed.png)
-
-<h2>Payment Failure</h2>
-![image alt](https://github.com/poojaagee/ShopSphere/blob/c25eae24a4db8588563d003e5dc8818bc4a65e12/Payment%20Failed.png)
 
 
-<h2>Customer Reviews</h2>
-![image alt](https://github.com/poojaagee/ShopSphere/blob/c25eae24a4db8588563d003e5dc8818bc4a65e12/Customer%20Reviews.png)
 
 
 

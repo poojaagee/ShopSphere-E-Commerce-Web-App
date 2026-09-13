@@ -21,94 +21,161 @@ The backend is powered by Django and PostgreSQL, while Django REST Framework pro
 Product listing and product detail pages
 
 Categories and brands
+
 Product variants
+
 Product images
+
 SKU management
+
 Product search
+
 Category and brand filtering
+
 Price sorting
+
 Pagination
+
 Product availability and inventory information
 
 <h2>User Accounts</h2>
 User registration and login
+
 Logout
+
 User profiles
+
 Phone number management
+
 Shipping and billing addresses
+
 Default address support
+
 Authentication-protected features
 
 <h2>Shopping Cart</h2>
 Add product variants to cart
+
 Increase/decrease quantities
+
 Remove cart items
+
 Stock validation
+
 Automatic subtotal calculation
+
 Discount calculation
+
 Final order total
+
 <h2>Wishlist</h2>
 Add products to wishlist
+
 Remove products from wishlist
+
 Prevent duplicate wishlist items
+
 Authentication-protected wishlist
+
 <h2>Coupons & Discounts</h2>
 Percentage-based discounts
+
 Fixed-amount discounts
+
 Minimum order amount
+
 Coupon validity period
+
 Usage limits
+
 Per-user usage limits
+
 Coupon application and removal
+
 Coupon usage tracking
+
 <h2>Checkout & Orders</h2>
 Checkout workflow
+
 Shipping and billing information
+
 Order creation
+
 Order item snapshots
+
 Order confirmation
+
 Order history
+
 Order detail pages
+
 Order status management
 
 <h2>Payment Simulation</h2>
 ShopSphere includes a Demo/Test Payment workflow rather than a real payment gateway.
 It supports:
 Demo Card success
+
 Demo Card failure
+
 Payment retry after failure
+
 Cash on Delivery
+
 Payment status tracking
+
 Payment reference tracking
+
 Inventory finalization after successful payment/order confirmation
 
 **No real financial transactions are processed by the application.**
 
 <h2>Inventory Management</h2>
 Variant-level inventory
+
 Stock quantity tracking
+
 Low-stock threshold
+
 Stock validation during cart and checkout operations
+
 Inventory deduction during order finalization
+
 Protection against duplicate inventory deduction
+
 <h2>Reviews & Ratings</h2>
 Product ratings from 1–5
+
 Review title and comments
+
 Verified-purchase review eligibility
+
 One review per user per product
+
 Review editing and deletion
+
 Average rating calculation
+
 Rating distribution
+
 <h2>REST API</h2>
 ShopSphere provides REST APIs using Django REST Framework for:
 Products
+
 Product details
+
 Categories
+
 Brands
+
 Cart
+
 Wishlist
+
 Coupons
+
 Orders
+
 Product reviews
 
 The API also applies authentication and permission controls to protected resources.
@@ -116,60 +183,100 @@ The API also applies authentication and permission controls to protected resourc
 <h2>Security</h2>
 The project includes:
 Environment-based configuration
+
 Secret key stored outside source code
+
 PostgreSQL database credentials stored in .env
+
 .env excluded from Git
+
 Password validation
+
 CSRF protection
+
 Session authentication
+
 Authentication-protected views
+
 Authorization checks for user-owned data
+
 Secure cookie configuration for production
+
 MIME-sniffing protection
+
 Clickjacking protection
+
 Referrer policy
+
 Conditional HSTS configuration for production
+
 Automated Testing
+
 ShopSphere includes automated Django tests covering important application functionality.
+
 The current test suite contains 19 automated tests, including tests for:
 Product and inventory behavior
+
 Cart calculations
+
 Coupons
+
 Wishlist
+
 Orders
+
 Demo payment success and failure
+
 Cash on Delivery
+
 Inventory deduction
+
 Duplicate payment/inventory protection
+
 Order access control
+
 Reviews
+
 REST API access and authentication
 
 The test suite was successfully executed with:
+
 Found 19 test(s).
+
 System check identified no issues (0 silenced).
+
 Ran 19 tests
+
 OK
 
 <h1>🛠️ Technology Stack</h1>
 <h2>Backend</h2>
 Python
+
 Django
+
 Django REST Framework
 <h2>Database</h2>
 PostgreSQL
 <h2>Frontend</h2>
 HTML5
+
 CSS3
+
 JavaScript
+
 Bootstrap/Django templates
 <h2>Development Tools</h2>
 Git
+
 GitHub
+
 Visual Studio Code
 <h2>Additional Python Packages</h2>
 psycopg
+
 python-dotenv
+
 Pillow
 
 <h1>🏗️ Application Architecture</h1>

@@ -490,6 +490,7 @@ Academic project — 7th Semester
 
 <h1>SCREENSHOTS</h1>
 <h2>LOGIN PAGE</h2>
+
 ![image alt](https://github.com/poojaagee/ShopSphere/blob/50856149577aefc1fe03d2d4ee0cc2196b181143/Login%20Page.png)
 
 

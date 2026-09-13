@@ -2,7 +2,7 @@
 
 ShopSphere is a 7th Semester academic project developed for educational and learning purposes only. It is a demonstration e-commerce application and is not a real online store.The project may contain references to real-world brand names, product names, logos, trademarks, and other intellectual property belonging to their respective owners, including but not limited to Myntra, HP, Dell, Pigeon, Levi's, and other brands. Such references are used solely for identification, demonstration, and educational purposes.ShopSphere is not affiliated with, sponsored by, endorsed by, or officially associated with any of the mentioned companies or brands.All product prices, specifications, descriptions, inventory information, and other product data displayed in the application are demonstration data and should not be considered actual commercial information.The product images used in ShopSphere are AI-generated images created for this educational project and are used for demonstration purposes.This project is not intended to represent an official store or commercial service of any brand.
 
-<h1>#ShopSphere 🛒</h1>
+<h1>ShopSphere 🛒</h1>
 
 ShopSphere is a full-stack e-commerce web application developed as a 7th Semester academic project using Python, Django, PostgreSQL, and Django REST Framework.
 
@@ -28,7 +28,8 @@ Category and brand filtering
 Price sorting
 Pagination
 Product availability and inventory information
-User Accounts
+
+<h2>User Accounts</h2>
 User registration and login
 Logout
 User profiles
@@ -36,7 +37,8 @@ Phone number management
 Shipping and billing addresses
 Default address support
 Authentication-protected features
-Shopping Cart
+
+<h2>Shopping Cart</h2>
 Add product variants to cart
 Increase/decrease quantities
 Remove cart items
@@ -44,12 +46,12 @@ Stock validation
 Automatic subtotal calculation
 Discount calculation
 Final order total
-Wishlist
+<h2>Wishlist</h2>
 Add products to wishlist
 Remove products from wishlist
 Prevent duplicate wishlist items
 Authentication-protected wishlist
-Coupons & Discounts
+<h2>Coupons & Discounts</h2>
 Percentage-based discounts
 Fixed-amount discounts
 Minimum order amount
@@ -58,7 +60,7 @@ Usage limits
 Per-user usage limits
 Coupon application and removal
 Coupon usage tracking
-Checkout & Orders
+<h2>Checkout & Orders</h2>
 Checkout workflow
 Shipping and billing information
 Order creation
@@ -67,12 +69,10 @@ Order confirmation
 Order history
 Order detail pages
 Order status management
-Payment Simulation
 
+<h2>Payment Simulation</h2>
 ShopSphere includes a Demo/Test Payment workflow rather than a real payment gateway.
-
 It supports:
-
 Demo Card success
 Demo Card failure
 Payment retry after failure
@@ -81,16 +81,16 @@ Payment status tracking
 Payment reference tracking
 Inventory finalization after successful payment/order confirmation
 
-No real financial transactions are processed by the application.
+**No real financial transactions are processed by the application.**
 
-Inventory Management
+<h2>Inventory Management</h2>
 Variant-level inventory
 Stock quantity tracking
 Low-stock threshold
 Stock validation during cart and checkout operations
 Inventory deduction during order finalization
 Protection against duplicate inventory deduction
-Reviews & Ratings
+<h2>Reviews & Ratings</h2>
 Product ratings from 1–5
 Review title and comments
 Verified-purchase review eligibility
@@ -98,10 +98,8 @@ One review per user per product
 Review editing and deletion
 Average rating calculation
 Rating distribution
-REST API
-
+<h2>REST API</h2>
 ShopSphere provides REST APIs using Django REST Framework for:
-
 Products
 Product details
 Categories
@@ -114,10 +112,8 @@ Product reviews
 
 The API also applies authentication and permission controls to protected resources.
 
-Security
-
+<h2>Security</h2>
 The project includes:
-
 Environment-based configuration
 Secret key stored outside source code
 PostgreSQL database credentials stored in .env
@@ -133,11 +129,8 @@ Clickjacking protection
 Referrer policy
 Conditional HSTS configuration for production
 Automated Testing
-
 ShopSphere includes automated Django tests covering important application functionality.
-
 The current test suite contains 19 automated tests, including tests for:
-
 Product and inventory behavior
 Cart calculations
 Coupons
@@ -152,33 +145,33 @@ Reviews
 REST API access and authentication
 
 The test suite was successfully executed with:
-
 Found 19 test(s).
 System check identified no issues (0 silenced).
 Ran 19 tests
 OK
-🛠️ Technology Stack
-Backend
+
+<h1>🛠️ Technology Stack</h1>
+<h2>Backend</h2>
 Python
 Django
 Django REST Framework
-Database
+<h2>Database</h2>
 PostgreSQL
-Frontend
+<h2>Frontend</h2>
 HTML5
 CSS3
 JavaScript
 Bootstrap/Django templates
-Development Tools
+<h2>Development Tools</h2>
 Git
 GitHub
 Visual Studio Code
-Additional Python Packages
+<h2>Additional Python Packages</h2>
 psycopg
 python-dotenv
 Pillow
 
-🏗️ Application Architecture
+<h1>🏗️ Application Architecture</h1>
 
 ShopSphere follows a Django-based full-stack architecture.
 
@@ -209,6 +202,7 @@ ShopSphere follows a Django-based full-stack architecture.
                     │     PostgreSQL      │
                     │       Database      │
                     └─────────────────────┘
+                    
 📁 Main Project Structure
 ShopSphere/
 │

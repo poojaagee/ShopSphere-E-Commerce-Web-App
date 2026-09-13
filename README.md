@@ -19,6 +19,7 @@ The backend is powered by Django and PostgreSQL, while Django REST Framework pro
 <h1>✨ Key Features</h1>
 <h2>Product Catalog</h2>
 Product listing and product detail pages
+
 Categories and brands
 Product variants
 Product images

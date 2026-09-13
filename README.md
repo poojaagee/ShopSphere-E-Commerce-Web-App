@@ -39,6 +39,7 @@ Pagination
 Product availability and inventory information
 
 <h2>User Accounts</h2>
+
 User registration and login
 
 Logout
@@ -54,6 +55,7 @@ Default address support
 Authentication-protected features
 
 <h2>Shopping Cart</h2>
+
 Add product variants to cart
 
 Increase/decrease quantities
@@ -69,6 +71,7 @@ Discount calculation
 Final order total
 
 <h2>Wishlist</h2>
+
 Add products to wishlist
 
 Remove products from wishlist
@@ -78,6 +81,7 @@ Prevent duplicate wishlist items
 Authentication-protected wishlist
 
 <h2>Coupons & Discounts</h2>
+
 Percentage-based discounts
 
 Fixed-amount discounts
@@ -95,6 +99,7 @@ Coupon application and removal
 Coupon usage tracking
 
 <h2>Checkout & Orders</h2>
+
 Checkout workflow
 
 Shipping and billing information
@@ -131,6 +136,7 @@ Inventory finalization after successful payment/order confirmation
 **No real financial transactions are processed by the application.**
 
 <h2>Inventory Management</h2>
+
 Variant-level inventory
 
 Stock quantity tracking
@@ -144,6 +150,7 @@ Inventory deduction during order finalization
 Protection against duplicate inventory deduction
 
 <h2>Reviews & Ratings</h2>
+
 Product ratings from 1–5
 
 Review title and comments
@@ -159,7 +166,9 @@ Average rating calculation
 Rating distribution
 
 <h2>REST API</h2>
+
 ShopSphere provides REST APIs using Django REST Framework for:
+
 Products
 
 Product details
@@ -182,6 +191,7 @@ The API also applies authentication and permission controls to protected resourc
 
 <h2>Security</h2>
 The project includes:
+
 Environment-based configuration
 
 Secret key stored outside source code
@@ -251,6 +261,7 @@ OK
 
 <h1>🛠️ Technology Stack</h1>
 <h2>Backend</h2>
+
 Python
 
 Django

@@ -194,12 +194,6 @@ The project includes:
 
 Environment-based configuration
 
-Secret key stored outside source code
-
-PostgreSQL database credentials stored in .env
-
-.env excluded from Git
-
 Password validation
 
 CSRF protection
@@ -485,6 +479,8 @@ Adding React to frontend.
 This repository is intended primarily as an educational and academic portfolio project.
 
 The ShopSphere source code is provided for learning and demonstration purposes. Third-party brand names, trademarks, product references, and other intellectual property remain the property of their respective owners.
+
+
 
 <h1>👩‍💻 Developer </h1>
 

@@ -315,22 +315,35 @@ ShopSphere follows a Django-based full-stack architecture.
 ShopSphere/
 │
 ├── accounts/          # User profiles, authentication and addresses
+|
 ├── api/               # Django REST Framework API
+|
 ├── cart/              # Shopping cart
+|
 ├── coupons/           # Coupons and discount logic
+|
 ├── orders/            # Checkout, orders and payment workflow
+|
 ├── products/          # Products, variants and inventory
+|
 ├── reviews/           # Product reviews and ratings
+|
 ├── wishlist/          # Wishlist functionality
 │
 ├── config/            # Django project configuration
 │
 ├── templates/         # HTML templates
+|
 ├── static/            # CSS and static assets
+|
 ├── media/             # Uploaded product media
 │
 ├── manage.py
+|
 ├── requirements.txt
+|
 ├── .env.example
+|
 ├── .gitignore
+|
 └── README.md

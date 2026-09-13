@@ -313,6 +313,7 @@ ShopSphere follows a Django-based full-stack architecture.
                     
 📁 Main Project Structure
 ShopSphere/
+
 │
 ├── accounts/          # User profiles, authentication and addresses
 
@@ -363,4 +364,120 @@ ShopSphere/
 
 |
 └── README.md
+
+
+<h1>🔌 REST API</h1>
+The API is available under:
+
+/api/
+
+Main API Endpoints
+
+/api/
+
+/api/products/
+
+/api/products/<slug>/
+
+/api/categories/
+
+/api/brands/
+
+/api/cart/
+
+/api/cart/add/
+
+/api/cart/update/
+
+/api/cart/remove/
+
+/api/wishlist/
+
+/api/wishlist/add/
+
+/api/wishlist/remove/
+
+/api/coupons/
+
+/api/cart/coupon/
+
+/api/cart/coupon/remove/
+
+/api/orders/
+
+/api/orders/<order_number>/
+
+/api/products/<product_id>/reviews/
+
+/api/products/<product_id>/reviews/create/
+
+/api/reviews/<id>/
+
+/api/reviews/<id>/delete/
+
+The project uses Django REST Framework's session authentication and permission system.
+
+<h1>💳 Payment Disclaimer</h1>
+ShopSphere does not process real payments.
+
+The Demo Card payment option is implemented solely to demonstrate an e-commerce payment workflow, including successful payments, failed payments, retries, payment status handling, and order finalization.
+
+Cash on Delivery is also provided as a simulated order/payment option.
+
+No real financial transactions are performed.
+
+
+<h1>🎓 Academic Project</h1>
+
+ShopSphere was developed as a 7th Semester academic project to gain practical experience in:
+
+Full-stack web development
+
+Python and Django
+
+Database design
+
+PostgreSQL
+
+REST API development
+
+Authentication and authorization
+
+E-commerce business logic
+
+Transaction handling
+
+Inventory management
+
+Secure application configuration
+
+Automated software testing
+
+Git and GitHub
+
+<h1>🚀 Future Enhancments</h1>
+
+Possible future enhancements include:
+
+Production deployment
+
+Production email service
+
+Advanced frontend frameworks
+
+Additional monitoring and analytics
+
+Adding React to frontend.
+
+
+<h1>📄 License / Usage</h1>
+This repository is intended primarily as an educational and academic portfolio project.
+
+The ShopSphere source code is provided for learning and demonstration purposes. Third-party brand names, trademarks, product references, and other intellectual property remain the property of their respective owners.
+
+<h1>👩‍💻 Developer </h1>
+
+POOJA G
+
+Academic project — 7th Semester
 
